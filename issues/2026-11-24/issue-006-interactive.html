@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SIGNAL BRIEF · Modular Harness Gates, Co-Evolved Verifiers &amp; Self-HPO (Issue 006)</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,401,500,501,700,701,900&amp;display=swap">
+<style type="text/css">
+
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Regular'), local('Satoshi-Regular'), local('Satoshi'),
+         url('https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2VNOK6FL22KUT/7QYRJOI3JIMYHGY6CH7SOIFRQLZOLNJ6/KFIAZD4RUMEZIYV6FQ3T3GP5PDBDB6JY.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2VNOK6FL22KUT/7QYRJOI3JIMYHGY6CH7SOIFRQLZOLNJ6/KFIAZD4RUMEZIYV6FQ3T3GP5PDBDB6JY.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Italic'), local('Satoshi-Italic'),
+         url('https://cdn.fontshare.com/wf/MPIFA4B3XXRNY2MJDGP6GOOOAF6EOCLO/W5E4ZFYPJ3V6JKMBGHB6YMITK6EWS2XA/QOMBWPST76ICDYF6WOBS7SQ7RBT67QW2.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/MPIFA4B3XXRNY2MJDGP6GOOOAF6EOCLO/W5E4ZFYPJ3V6JKMBGHB6YMITK6EWS2XA/QOMBWPST76ICDYF6WOBS7SQ7RBT67QW2.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Medium'), local('Satoshi-Medium'),
+         url('https://cdn.fontshare.com/wf/P2LQKHE6KA6ZP4AAGN72KDWMHH6ZH3TA/ZC32TK2P7FPS5GFTL46EU6KQJA24ZYDB/7AHDUZ4A7LFLVFUIFSARGIWCRQJHISQP.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/P2LQKHE6KA6ZP4AAGN72KDWMHH6ZH3TA/ZC32TK2P7FPS5GFTL46EU6KQJA24ZYDB/7AHDUZ4A7LFLVFUIFSARGIWCRQJHISQP.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Medium Italic'), local('Satoshi-MediumItalic'),
+         url('https://cdn.fontshare.com/wf/NID3I7RITWZSKXRCJGOCMP5NOADJK6IG/2HLHGD7OBTWCOHW64YXOE5KFXHU4KJHM/ZHME2QIRFR7UPJ47NLY27RCAFY44CKZJ.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/NID3I7RITWZSKXRCJGOCMP5NOADJK6IG/2HLHGD7OBTWCOHW64YXOE5KFXHU4KJHM/ZHME2QIRFR7UPJ47NLY27RCAFY44CKZJ.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Bold'), local('Satoshi-Bold'),
+         url('https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: local('Satoshi Bold Italic'), local('Satoshi-BoldItalic'),
+         url('https://cdn.fontshare.com/wf/CDEBEFT2R7XKNGXSBBLZGMY4MMHZG75P/HEVKDGQCYDZ7Z6CDVR2ZQGBCTUD6ZARH/BKWEE3VKGTFABE37K2DTH625VUSN2N35.woff2') format('woff2'),
+         url('https://cdn.fontshare.com/wf/CDEBEFT2R7XKNGXSBBLZGMY4MMHZG75P/HEVKDGQCYDZ7Z6CDVR2ZQGBCTUD6ZARH/BKWEE3VKGTFABE37K2DTH625VUSN2N35.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+
+  /* Progressive Pantone 2026 x iOS Glass Enhancement (Gmail-safe: no border shorthand overrides) */
+  .ios-frosted {
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+  .ios-smoke {
+    backdrop-filter: blur(26px) saturate(180%);
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+  }
+  .ios-clear-dark {
+    backdrop-filter: blur(20px) saturate(175%);
+    -webkit-backdrop-filter: blur(20px) saturate(175%);
+  }
+  .ios-tinted-well {
+    backdrop-filter: blur(16px) saturate(165%);
+    -webkit-backdrop-filter: blur(16px) saturate(165%);
+  }
+
+
+  /* Scoped Pantone 2026 Design Tokens ("Gallery Silk & Nocturnal Ultramarine") */
+  .pt-root {
+    --pt-canvas: #F4F3EF;            /* PANTONE 11-4201 TCX Cloud Dancer */
+    --pt-surface: #FDFDFB;           /* PANTONE 11-0602 TCX Snow White */
+    --pt-well: #ECEEF2;              /* PANTONE 12-4302 TCX Vaporous Gray */
+    --pt-ink: #16181D;               /* PANTONE 19-4007 TCX Anthracite (16.9:1 AAA) */
+    --pt-ink-body: #262B35;          /* PANTONE 19-3917 TCX Vulcanic Slate (13.6:1 AAA) */
+    --pt-ink-muted: #3F4756;         /* PANTONE 18-4011 Deep Graphite Blue (8.8:1 AAA) */
+
+    --pt-accent: #2B44C8;            /* PANTONE 18-3949 TCX Dazzling Ultramarine */
+    --pt-accent-ink: #1E329E;        /* Ultramarine Pill Ink (9.8:1 AAA) */
+    --pt-accent-wash: #EDEFF9;
+    --pt-accent-border: #C5CEFA;
+
+    --pt-viridian: #085A46;          /* PANTONE 17-5641 Deep Emerald Viridian (8.1:1 AAA w/ white) */
+    --pt-viridian-on: #FFFFFF;
+    --pt-viridian-ink: #08503E;      /* Viridian Pill Ink (8.5:1 AAA) */
+    --pt-viridian-wash: #E6F4EE;
+    --pt-viridian-border: #A7DEC9;
+
+    --pt-terracotta: #B83B24;        /* PANTONE 17-1456 TCX Persimmon Terracotta */
+    --pt-terracotta-ink: #7A2414;    /* Terracotta Pill Ink (8.6:1 AAA) */
+    --pt-terracotta-wash: #FDECE8;
+    --pt-terracotta-surface: #FDF4F1;
+    --pt-terracotta-border: #F2B8AB;
+
+    --pt-glass-bg: linear-gradient(180deg, rgba(253, 253, 251, 0.90) 0%, rgba(247, 246, 242, 0.80) 100%);
+    --pt-glass-border: rgba(255, 255, 255, 0.94);
+    --pt-glass-ring: rgba(22, 24, 29, 0.072);
+    --pt-glass-shadow: 0 20px 44px -16px rgba(22, 24, 29, 0.08), 0 2px 6px rgba(22, 24, 29, 0.03);
+    --pt-divider: rgba(22, 24, 29, 0.085);
+    --pt-dock-bg: rgba(248, 247, 243, 0.86);
+    --pt-subcard-bg: rgba(255, 255, 255, 0.72);
+    --pt-chip-bg: #ECEEF2;
+    --pt-chip-border: #D3D7E0;
+
+    --pt-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    margin: 0;
+    padding: 0;
+    background-color: var(--pt-canvas);
+    background-image:
+      radial-gradient(circle at 12% 7%, rgba(43, 68, 200, 0.075) 0%, transparent 40%),
+      radial-gradient(circle at 88% 24%, rgba(13, 110, 87, 0.065) 0%, transparent 42%),
+      radial-gradient(circle at 16% 84%, rgba(184, 59, 36, 0.05) 0%, transparent 44%);
+    background-attachment: fixed;
+    color: var(--pt-ink);
+    font-family: 'Satoshi', 'Satoshi Variable', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 320ms var(--pt-ease-expo), color 240ms ease;
+  }
+
+  /* Full-Surface Nocturnal Smoke Mode (100% WCAG AAA Dark Adaptation) */
+  .pt-root[data-pantone-mode="nocturnal"] {
+    --pt-canvas: #070A12;
+    --pt-surface: #101728;
+    --pt-well: #151E34;
+    --pt-ink: #F6F5F2;               /* Cloud Dancer (17.8:1 AAA) */
+    --pt-ink-body: #E4E8F0;          /* Glacier Mist (15.1:1 AAA) */
+    --pt-ink-muted: #BAC4D6;         /* Quiet Harbor (10.6:1 AAA) */
+
+    --pt-accent: #A6B9FF;            /* Periwinkle Mist (10.2:1 AAA) */
+    --pt-accent-ink: #DCE4FF;
+    --pt-accent-wash: rgba(43, 68, 200, 0.24);
+    --pt-accent-border: rgba(166, 185, 255, 0.36);
+
+    --pt-viridian: #6EE2C3;          /* Seafoam Celadon (12.4:1 AAA) */
+    --pt-viridian-on: #07120F;
+    --pt-viridian-ink: #B8F3E2;
+    --pt-viridian-wash: rgba(13, 110, 87, 0.26);
+    --pt-viridian-border: rgba(110, 226, 195, 0.38);
+
+    --pt-terracotta: #F7A392;        /* Coral Clay (9.9:1 AAA) */
+    --pt-terracotta-ink: #FFD5CC;
+    --pt-terracotta-wash: rgba(184, 59, 36, 0.26);
+    --pt-terracotta-surface: rgba(46, 20, 24, 0.72);
+    --pt-terracotta-border: rgba(247, 163, 146, 0.36);
+
+    --pt-glass-bg: linear-gradient(180deg, rgba(21, 29, 50, 0.86) 0%, rgba(12, 17, 31, 0.92) 100%);
+    --pt-glass-border: rgba(244, 243, 239, 0.14);
+    --pt-glass-ring: rgba(0, 0, 0, 0.50);
+    --pt-glass-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.55);
+    --pt-divider: rgba(244, 243, 239, 0.12);
+    --pt-dock-bg: rgba(15, 21, 37, 0.86);
+    --pt-subcard-bg: rgba(19, 27, 46, 0.68);
+    --pt-chip-bg: #17213A;
+    --pt-chip-border: rgba(244, 243, 239, 0.18);
+  }
+
+  .pt-root *, .pt-root *::before, .pt-root *::after {
+    box-sizing: border-box;
+  }
+  .pt-root ::selection {
+    background: rgba(43, 68, 200, 0.18);
+    color: var(--pt-ink);
+  }
+  .pt-root[data-pantone-mode="nocturnal"] ::selection {
+    background: rgba(110, 226, 195, 0.28);
+    color: #F6F5F2;
+  }
+  .pt-root a {
+    text-underline-offset: 3px;
+  }
+  .pt-root :focus-visible {
+    outline: 2px solid var(--pt-accent);
+    outline-offset: 2px;
+  }
+
+  /* Top 2.5px GPU Scroll Progress Rail */
+  .pt-progress-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 90;
+    background: rgba(22, 24, 29, 0.06);
+    pointer-events: none;
+  }
+  .pt-progress-bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, #2B44C8 0%, #6EE2C3 65%, #A6B9FF 100%);
+    transition: transform 80ms linear;
+  }
+
+  /* Main Studio Shell */
+  .pt-shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 26px 64px;
+  }
+  @media (max-width: 680px) {
+    .pt-shell {
+      padding: 14px 16px 48px;
+    }
+  }
+
+  /* Sculpted visionOS Centered Liquid-Glass Capsule Dock */
+  .pt-dock-wrap {
+    position: sticky;
+    top: 12px;
+    z-index: 75;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+    pointer-events: none;
+  }
+  .pt-dock {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 7px;
+    border-radius: 999px;
+    background: var(--pt-dock-bg);
+    backdrop-filter: blur(30px) saturate(190%);
+    -webkit-backdrop-filter: blur(30px) saturate(190%);
+    border: 1px solid var(--pt-glass-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42), 0 0 0 1px var(--pt-glass-ring), 0 14px 34px -10px rgba(11, 15, 26, 0.16);
+  }
+  .pt-dock-sep {
+    width: 1px;
+    height: 18px;
+    background: var(--pt-divider);
+    margin: 0 2px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 680px) {
+    .pt-dock {
+      border-radius: 20px;
+      padding: 6px 10px;
+    }
+    .pt-dock-sep {
+      display: none;
+    }
+  }
+  .pt-dock-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 100%;
+    padding: 1px 0;
+  }
+  .pt-dock-nav::-webkit-scrollbar { display: none; }
+
+  .pt-spy-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 5.5px 11px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--pt-ink-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 180ms var(--pt-ease-expo);
+  }
+  .pt-spy-link:hover {
+    color: var(--pt-ink);
+    background: var(--pt-divider);
+  }
+  .pt-spy-link.is-active {
+    background: var(--pt-ink);
+    color: var(--pt-canvas);
+    box-shadow: 0 2px 8px rgba(11, 15, 26, 0.18);
+  }
+
+  .pt-dock-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pt-seg-group {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--pt-chip-bg);
+    border: 1px solid var(--pt-chip-border);
+  }
+  .pt-seg-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--pt-ink-muted);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 180ms var(--pt-ease-expo);
+  }
+  .pt-seg-btn.is-active {
+    background: var(--pt-surface);
+    color: var(--pt-ink);
+    box-shadow: 0 1px 4px rgba(11, 15, 26, 0.12);
+  }
+
+  .pt-icon-btn {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--pt-chip-border);
+    background: var(--pt-surface);
+    color: var(--pt-ink);
+    font-family: inherit;
+    font-size: 13.5px;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 160ms var(--pt-ease-expo), background 160ms ease, border-color 160ms ease;
+  }
+  @media (hover: hover) {
+    .pt-icon-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--pt-accent);
+    }
+  }
+  .pt-icon-btn.is-active {
+    background: var(--pt-accent-wash);
+    border-color: var(--pt-accent-border);
+    color: var(--pt-accent-ink);
+  }
+
+  /* Pantone Pill Badges */
+  .pt-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4.5px 12px;
+    border-radius: 999px;
+    font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .pt-pill-accent {
+    background: var(--pt-accent-wash);
+    border: 1px solid var(--pt-accent-border);
+    color: var(--pt-accent-ink);
+  }
+  .pt-pill-viridian {
+    background: var(--pt-viridian-wash);
+    border: 1px solid var(--pt-viridian-border);
+    color: var(--pt-viridian-ink);
+  }
+  .pt-pill-terracotta {
+    background: var(--pt-terracotta-wash);
+    border: 1px solid var(--pt-terracotta-border);
+    color: var(--pt-terracotta-ink);
+  }
+  .pt-pill-dark {
+    background: linear-gradient(180deg, rgba(244, 243, 239, 0.11) 0%, rgba(244, 243, 239, 0.03) 100%);
+    border: 1px solid rgba(244, 243, 239, 0.20);
+    box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.22);
+    color: #F6F5F2;
+  }
+
+  /* 1. Nocturnal Smoked-Glass Hero Stage */
+  .pt-hero {
+    position: relative;
+    border-radius: 28px;
+    padding: 36px;
+    background-color: #0B0F1A;
+    background-image:
+      radial-gradient(ellipse 620px 360px at 88% 12%, rgba(43, 68, 200, 0.38), transparent 64%),
+      radial-gradient(ellipse 520px 320px at 10% 90%, rgba(13, 110, 87, 0.25), transparent 64%),
+      linear-gradient(158deg, #0B0F1A 0%, #111829 60%, #0D1322 100%);
+    border: 1px solid rgba(244, 243, 239, 0.16);
+    box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.22), 0 28px 56px -16px rgba(8, 11, 20, 0.44);
+    color: #F6F5F2;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .pt-hero-grid {
+    display: grid;
+    grid-template-columns: 1.24fr 0.92fr;
+    gap: clamp(20px, 3vw, 32px);
+    align-items: center;
+  }
+  @media (max-width: 820px) {
+    .pt-hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pt-masthead {
+    margin: 14px 0 10px;
+    font-size: clamp(32px, 4.6vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    color: #F6F5F2;
+  }
+  .pt-masthead-accent {
+    color: #A6B9FF;
+  }
+  .pt-hero-subline {
+    font-size: 15px;
+    line-height: 1.58;
+    color: #BAC4D6;
+    margin: 0 0 16px;
+  }
+  .pt-hero-wit {
+    padding: 12px 0 0;
+    border-top: 1px solid rgba(244, 243, 239, 0.14);
+    font-size: 14.5px;
+    font-style: italic;
+    line-height: 1.56;
+    color: #F6F5F2;
+  }
+
+  /* 3D Refractive Issue Pass */
+  .pt-holo-stage {
+    perspective: 1000px;
+  }
+  .pt-holo-pass {
+    --holo-x: 50%;
+    --holo-y: 50%;
+    position: relative;
+    border-radius: 22px;
+    padding: 22px;
+    background:
+      radial-gradient(circle 220px at var(--holo-x) var(--holo-y), rgba(166, 185, 255, 0.24), transparent 70%),
+      linear-gradient(160deg, rgba(28, 39, 74, 0.86) 0%, rgba(12, 17, 32, 0.94) 100%);
+    border: 1px solid rgba(244, 243, 239, 0.22);
+    box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.30), 0 22px 44px -12px rgba(4, 7, 15, 0.65);
+    transition: transform 180ms cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    will-change: transform;
+  }
+  .pt-spark-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+    height: 48px;
+    margin-top: 14px;
+    padding: 8px 2px 0;
+    border-top: 1px solid rgba(244, 243, 239, 0.12);
+  }
+  .pt-spark-bar {
+    flex: 1;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(180deg, #6EE2C3 0%, #2B44C8 100%);
+    transition: height 260ms var(--pt-ease-expo);
+  }
+
+  /* Self-Play Scaling Simulator inside Hero */
+  .pt-sim-box {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(244, 243, 239, 0.13);
+  }
+  .pt-sim-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .pt-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 7px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2B44C8 0%, #6EE2C3 var(--pct, 50%), rgba(244, 243, 239, 0.16) var(--pct, 50%));
+    outline: none;
+    cursor: pointer;
+    margin: 6px 0 16px;
+  }
+  .pt-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: #F6F5F2;
+    border: 3px solid #6EE2C3;
+    box-shadow: 0 0 0 4px rgba(110, 226, 195, 0.22), 0 4px 10px rgba(0, 0, 0, 0.45);
+    transition: transform 150ms var(--pt-ease-expo);
+  }
+  .pt-range::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+  }
+  .pt-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    background: #F6F5F2;
+    border: 3px solid #6EE2C3;
+    box-shadow: 0 0 0 4px rgba(110, 226, 195, 0.22);
+  }
+
+  .pt-hero-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 8px;
+  }
+  @media (max-width: 720px) {
+    .pt-hero-tiles {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+  .pt-hero-tile {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(244, 243, 239, 0.16);
+    transition: transform 200ms var(--pt-ease-expo);
+  }
+  .pt-tile-bottleneck {
+    border-top-color: rgba(247, 163, 146, 0.45);
+  }
+  .pt-tile-loop {
+    border-top-color: #A6B9FF;
+  }
+  .pt-tile-gain {
+    border-top-color: #6EE2C3;
+  }
+
+  /* Frosted Ceramic Bento Cards & Spreads */
+  .pt-bento {
+    background: var(--pt-glass-bg);
+    backdrop-filter: blur(30px) saturate(175%);
+    -webkit-backdrop-filter: blur(30px) saturate(175%);
+    border: 1px solid var(--pt-glass-border);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 1px var(--pt-glass-ring), var(--pt-glass-shadow);
+    margin-bottom: 20px;
+  }
+  .pt-section-block {
+    margin-bottom: 22px;
+    padding: 6px 0 2px;
+  }
+
+  /* Asymmetric Signal + Metrics Spread */
+  .pt-spread-2col {
+    display: grid;
+    grid-template-columns: 1.38fr 0.82fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: stretch;
+  }
+  .pt-spread-2col > .pt-bento {
+    margin-bottom: 0;
+  }
+  @media (max-width: 840px) {
+    .pt-spread-2col {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pt-signal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 13px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    background: var(--pt-subcard-bg);
+    cursor: pointer;
+    transition: all 180ms var(--pt-ease-expo);
+  }
+  @media (hover: hover) {
+    .pt-signal-item:hover {
+      border-color: var(--pt-accent-border);
+      transform: translateX(2px);
+    }
+  }
+  .pt-signal-item.is-checked {
+    background: var(--pt-viridian-wash);
+    border-color: var(--pt-viridian-border);
+  }
+  .pt-signal-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--pt-ink);
+    color: var(--pt-canvas);
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: background 180ms ease;
+  }
+  .pt-signal-item.is-checked .pt-signal-check {
+    background: var(--pt-viridian);
+    color: var(--pt-viridian-on);
+  }
+
+  .pt-stat-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pt-stat-card {
+    flex: 1;
+    padding: 18px 20px;
+    border-radius: 20px;
+    background: var(--pt-glass-bg);
+    backdrop-filter: blur(26px) saturate(175%);
+    -webkit-backdrop-filter: blur(26px) saturate(175%);
+    border: 1px solid var(--pt-glass-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 1px var(--pt-glass-ring), var(--pt-glass-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 200ms var(--pt-ease-expo);
+  }
+  @media (hover: hover) {
+    .pt-stat-card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Cover Story Committed 65ch Optical Editorial Scale + Broadsheet Margin Rail */
+  .pt-reader-header {
+    max-width: 72ch;
+    margin-bottom: 22px;
+  }
+  .pt-cover-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 65ch) minmax(240px, 1fr);
+    gap: clamp(20px, 3vw, 38px);
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .pt-cover-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pt-root.is-skim-mode .pt-cover-grid {
+    grid-template-columns: 1fr;
+  }
+  .pt-editorial-col {
+    max-width: 65ch;
+  }
+  .pt-prose-p {
+    margin: 0 0 16px 0;
+    font-size: 16.75px;
+    line-height: 1.74;
+    letter-spacing: -0.004em;
+    color: var(--pt-ink-body);
+  }
+  .pt-chapter-h3 {
+    margin: 28px 0 10px 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--pt-ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Balanced Architectural Diptych (Before vs. Now) */
+  .pt-shift-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 18px 0 26px;
+    padding: 18px 0;
+    border-top: 1px solid var(--pt-divider);
+    border-bottom: 1px solid var(--pt-divider);
+  }
+  @media (max-width: 680px) {
+    .pt-shift-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  .pt-shift-card {
+    padding: 8px 14px;
+  }
+  .pt-shift-now {
+    padding-left: 22px;
+    border-left: 1px solid var(--pt-divider);
+  }
+  @media (max-width: 680px) {
+    .pt-shift-now {
+      padding-left: 14px;
+      padding-top: 16px;
+      border-left: 0;
+      border-top: 1px solid var(--pt-divider);
+    }
+  }
+
+  /* Interactive 4-Stage Loop Blueprint Stage */
+  .pt-blueprint {
+    border-radius: 28px;
+    padding: 32px;
+    background-color: #0B0F1A;
+    background-image:
+      radial-gradient(circle at 14% 14%, rgba(13, 110, 87, 0.26) 0%, transparent 48%),
+      radial-gradient(circle at 88% 18%, rgba(43, 68, 200, 0.36) 0%, transparent 52%),
+      linear-gradient(158deg, #0B0F1A 0%, #111829 58%, #0D1322 100%);
+    border: 1px solid rgba(244, 243, 239, 0.16);
+    box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.22), 0 26px 52px -14px rgba(8, 11, 20, 0.44);
+    color: #F6F5F2;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 680px) {
+    .pt-hero, .pt-bento, .pt-blueprint {
+      padding: 22px;
+    }
+  }
+  .pt-step-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .pt-step-tabs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pt-step-tab {
+    appearance: none;
+    text-align: left;
+    padding: 11px 12px;
+    border-radius: 14px;
+    background: rgba(244, 243, 239, 0.055);
+    border: 1px solid rgba(244, 243, 239, 0.14);
+    color: #BAC4D6;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 180ms var(--pt-ease-expo);
+  }
+  .pt-step-tab:hover {
+    background: rgba(244, 243, 239, 0.10);
+    color: #F6F5F2;
+  }
+  .pt-step-tab.is-active {
+    background: linear-gradient(180deg, rgba(43, 68, 200, 0.38) 0%, rgba(20, 29, 62, 0.90) 100%);
+    border-color: #6EE2C3;
+    color: #F6F5F2;
+    box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.22), 0 8px 20px -6px rgba(0, 0, 0, 0.45);
+  }
+  .pt-step-spotlight {
+    padding: 20px 16px;
+    border-top: 1px solid rgba(244, 243, 239, 0.20);
+    border-bottom: 1px solid rgba(244, 243, 239, 0.20);
+    margin-bottom: 16px;
+  }
+  .pt-step-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 680px) {
+    .pt-step-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pt-step-card {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(244, 243, 239, 0.14);
+    cursor: pointer;
+    transition: all 180ms var(--pt-ease-expo);
+  }
+  .pt-step-card:hover {
+    border-top-color: rgba(166, 185, 255, 0.55);
+  }
+  .pt-step-card.is-active {
+    border-top-color: #6EE2C3;
+  }
+
+  /* Dispatches & Vault Cards */
+  .pt-dispatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .pt-dispatch-card {
+    padding: 26px;
+    border-radius: 24px;
+    background: var(--pt-glass-bg);
+    backdrop-filter: blur(28px) saturate(175%);
+    -webkit-backdrop-filter: blur(28px) saturate(175%);
+    border: 1px solid var(--pt-glass-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 1px var(--pt-glass-ring), var(--pt-glass-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 200ms var(--pt-ease-expo), border-color 200ms ease;
+  }
+  @media (hover: hover) {
+    .pt-dispatch-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--pt-accent-border);
+    }
+  }
+  .pt-dispatch-card.is-hidden {
+    display: none !important;
+  }
+
+  .pt-cta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 999px;
+    background-color: #1E329E;
+    background-image: linear-gradient(180deg, #2B44C8 0%, #1B2D8F 100%);
+    border: 1px solid #172780;
+    color: #FFFFFF !important;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.30), 0 4px 12px -3px rgba(11, 15, 26, 0.24);
+    transition: transform 160ms var(--pt-ease-expo);
+  }
+  @media (hover: hover) {
+    .pt-cta-pill:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .pt-copy-chip {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: var(--pt-chip-bg);
+    border: 1px solid var(--pt-chip-border);
+    color: var(--pt-ink);
+    font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 160ms ease;
+  }
+  .pt-copy-chip:hover {
+    border-color: var(--pt-accent);
+  }
+  .pt-copy-chip.is-copied {
+    background: var(--pt-viridian-wash);
+    border-color: var(--pt-viridian-border);
+    color: var(--pt-viridian-ink);
+  }
+
+  .pt-figure {
+    margin: 0 0 22px 0;
+    padding: 0;
+  }
+  .pt-figure-compact {
+    margin: 0 0 16px 0;
+  }
+  .pt-figure-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+  .pt-figcaption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 2px 0;
+    font-size: 13.5px;
+    line-height: 1.52;
+    color: var(--pt-ink-muted);
+  }
+
+  /* 30-Second Executive Skim Mode */
+  .pt-root.is-skim-mode .pt-deep-only {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pt-root *, .pt-root *::before, .pt-root *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+</style>
+</head>
+<body class="pt-root" data-pantone-mode="silk">
+
+<div class="pt-progress-track" aria-hidden="true">
+  <div class="pt-progress-bar" id="pt-progress-bar"></div>
+</div>
+
+<div class="pt-shell">
+  <!-- Sculpted visionOS Centered Capsule Dock -->
+  <header class="pt-dock-wrap">
+    <div class="pt-dock">
+      <nav class="pt-dock-nav" id="pt-spy-nav" aria-label="Issue sections">
+        <a href="#sec-overview" class="pt-spy-link is-active" data-spy-link>Briefing</a>
+        <a href="#sec-signal" class="pt-spy-link" data-spy-link>Signal</a>
+        <a href="#sec-cover" class="pt-spy-link" data-spy-link>Story</a>
+        <a href="#sec-loop" class="pt-spy-link" data-spy-link>Loop</a>
+        <a href="#sec-dispatches" class="pt-spy-link" data-spy-link>Frontier</a>
+        <a href="#sec-vault" class="pt-spy-link" data-spy-link>Vault</a>
+      </nav>
+
+      <span class="pt-dock-sep" aria-hidden="true"></span>
+
+      <div class="pt-dock-controls">
+        <div class="pt-seg-group" id="pt-density-ctrl" role="group" aria-label="Reading depth">
+          <button type="button" class="pt-seg-btn is-active" data-density="deep">Deep Dive</button>
+          <button type="button" class="pt-seg-btn" data-density="skim">30s Skim</button>
+        </div>
+        <button type="button" class="pt-icon-btn" id="pt-theme-btn" aria-label="Toggle Nocturnal appearance" title="Toggle Nocturnal appearance">
+          <span id="pt-theme-icon" aria-hidden="true">&#9790;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="pt-panel-interactive">
+
+    <!-- SECTION 1: Nocturnal Smoked-Glass Hero + 3D Issue Pass + Self-Play Simulator -->
+    <section id="sec-overview" class="pt-hero" data-spy-section>
+      <div class="pt-hero-grid">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span class="pt-pill pt-pill-dark">
+              <span style="color:#6EE2C3;">&#9679;</span>Issue 006 &middot; VEIO S2N
+            </span>
+            <span id="pt-read-badge" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:#BAC4D6;">
+              4 min read
+            </span>
+          </div>
+
+          <h1 class="pt-masthead">
+            The Signal <span class="pt-masthead-accent">Brief.</span>
+          </h1>
+
+          <p style="margin:0 0 8px 0;font-size:14.5px;font-weight:500;color:#DCE4FF;letter-spacing:0.01em;line-height:1.45;">Signal 2 Noise intelligence keeping VEIO agents locked on goal</p>
+
+          <p class="pt-hero-subline">
+            <strong style="color:#F6F5F2;">Tuesday, November 24, 2026</strong> &middot; 07:00 ET &middot;
+            <strong style="color:#F6F5F2;">3 breakthroughs</strong> decoded +
+            <strong style="color:#A6B9FF;">5 context specs</strong> indexed.
+          </p>
+
+          <div class="pt-hero-wit"><span style="color:#6EE2C3;margin-right:7px;">&#9679;</span>&ldquo;Ask an agent to obey a markdown rule forever. It will still call finish on an empty diff by turn twelve.&rdquo;</div>
+        </div>
+
+        <!-- Pointer-Tracked 3D Refractive Issue Pass -->
+        <div class="pt-holo-stage">
+          <div class="pt-holo-pass" id="pt-holo-pass">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+              <span style="display:inline-flex;align-items:center;gap:6px;">
+                <span style="width:14px;height:14px;border-radius:999px;background:#F6F5F2;display:inline-block;"></span>
+                <span style="width:14px;height:14px;border-radius:999px;background:#A6B9FF;margin-left:-8px;display:inline-block;opacity:0.9;"></span>
+                <span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#BAC4D6;margin-left:4px;">ISSUE PASS &middot; 006</span>
+              </span>
+              <span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(110,226,195,0.16);border:1px solid rgba(110,226,195,0.42);color:#6EE2C3;">VERIFIED</span>
+            </div>
+
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.02em;line-height:1.32;color:#F6F5F2;margin-bottom:12px;">
+              Why Modular Code Gates, Co-Evolved Verifiers, and Harness-Policy Loops Beat Static Prompts
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding-top:10px;border-top:1px solid rgba(244,243,239,0.12);">
+              <div>
+                <div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">EDITION</div>
+                <div style="font-size:15px;font-weight:700;color:#F6F5F2;">07:00 ET</div>
+              </div>
+              <div>
+                <div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">STUDIES</div>
+                <div style="font-size:15px;font-weight:700;color:#6EE2C3;">3 Verified</div>
+              </div>
+              <div>
+                <div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">VAULT</div>
+                <div style="font-size:15px;font-weight:700;color:#A6B9FF;">+5 Specs</div>
+              </div>
+            </div>
+
+            <div class="pt-spark-bars" id="pt-spark-bars" aria-label="Self-play trajectory sparkline">
+              <div class="pt-spark-bar" style="height:28%;"></div>
+              <div class="pt-spark-bar" style="height:44%;"></div>
+              <div class="pt-spark-bar" style="height:61%;"></div>
+              <div class="pt-spark-bar" style="height:79%;"></div>
+              <div class="pt-spark-bar" style="height:94%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Self-Play Horizon Simulator -->
+      <div class="pt-sim-box">
+        <div class="pt-sim-header">
+          <label for="pt-sim-range" style="font-size:13.5px;font-weight:600;color:#E4E8F0;">
+            Signal-to-Noise Horizon
+          </label>
+          <button type="button" id="pt-sim-readout" style="appearance:none;border:1px solid rgba(110,226,195,0.40);background:rgba(13,110,87,0.28);color:#6EE2C3;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;padding:4px 11px;border-radius:999px;cursor:pointer;" title="Reset to Issue Snapshot">
+            Gen 12 &middot; Issue Snapshot
+          </button>
+        </div>
+
+        <input id="pt-sim-range" class="pt-range" type="range" min="1" max="20" value="12" style="--pct:57.9%;">
+
+        <div class="pt-hero-tiles">
+          <div class="pt-hero-tile pt-tile-bottleneck">
+            <div id="pt-t0-lbl" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#BAC4D6;margin-bottom:5px;">OLD BOTTLENECK</div>
+            <div id="pt-t0-val" style="font-size:18px;font-weight:700;color:#F7A392;text-decoration:line-through;line-height:1.2;margin-bottom:4px;">Static Prompts</div>
+            <div id="pt-t0-sub" style="font-size:12.5px;color:#E4E8F0;line-height:1.4;">Capped by human data</div>
+          </div>
+          <div class="pt-hero-tile pt-tile-loop">
+            <div id="pt-t1-lbl" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#DCE4FF;margin-bottom:5px;">TODAY&#x27;S LOOP</div>
+            <div id="pt-t1-val" style="font-size:18px;font-weight:700;color:#F6F5F2;line-height:1.2;margin-bottom:4px;">Self-Evolving</div>
+            <div id="pt-t1-sub" style="font-size:12.5px;color:#E4E8F0;line-height:1.4;">Sandbox &amp; meta-judge</div>
+          </div>
+          <div class="pt-hero-tile pt-tile-gain">
+            <div id="pt-t2-lbl" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#B8F3E2;margin-bottom:5px;">VERIFIED GAIN</div>
+            <div id="pt-t2-val" style="font-size:18px;font-weight:700;color:#6EE2C3;line-height:1.2;margin-bottom:4px;">8x</div>
+            <div id="pt-t2-sub" style="font-size:12.5px;color:#E4F7F1;line-height:1.4;">+5 specs in S2N Vault</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Asymmetric Magazine Spread (30-Second Signal + 3-Up Metrics) -->
+    <section id="sec-signal" class="pt-spread-2col" data-spy-section>
+      <div class="pt-bento">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="pt-pill pt-pill-accent"><span style="color:var(--pt-accent);">&#9679;</span>The Big Picture &middot; 30-Second Signal</span>
+          <span id="pt-signal-tally" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);">4 Key Takeaways</span>
+        </div>
+
+        <p style="margin:0 0 16px 0;font-size:18px;font-weight:700;line-height:1.50;letter-spacing:-0.015em;color:var(--pt-ink);">
+          Static prompts and frozen verifiers fail long coding runs. Today we unpack four studies plus live VEIO counts.
+        </p>
+
+        <div>
+          <div class="pt-signal-item" role="button" tabindex="0" data-signal-item="0" aria-pressed="false"><span class="pt-signal-check">&#10003;</span><span style="font-size:15.5px;line-height:1.64;color:var(--pt-ink-body);">Prompt rules fail under loop pressure. Modular code gates lifted SWE-bench Lite from 5.0% to 40.0% at 2.5x lower token spend.</span></div><div class="pt-signal-item" role="button" tabindex="0" data-signal-item="1" aria-pressed="false"><span class="pt-signal-check">&#10003;</span><span style="font-size:15.5px;line-height:1.64;color:var(--pt-ink-body);">Static harnesses stall updated weights. Self-HPO alternated harness edits and RL updates, lifting Qwen3.5-35B-A3B from 57.8% to 64.8%.</span></div><div class="pt-signal-item" role="button" tabindex="0" data-signal-item="2" aria-pressed="false"><span class="pt-signal-check">&#10003;</span><span style="font-size:15.5px;line-height:1.64;color:var(--pt-ink-body);">Frozen verifiers grow stale as agents improve. UCoE co-evolved executable verifiers via driving capacity, raising Codex SpreadsheetBench-2 from 17.3% to 22.7%.</span></div><div class="pt-signal-item" role="button" tabindex="0" data-signal-item="3" aria-pressed="false"><span class="pt-signal-check">&#10003;</span><span style="font-size:15.5px;line-height:1.64;color:var(--pt-ink-body);">Open-world tasks lack unit tests at runtime. Harness^2 used contrastive probes and memory, cutting steps 15.5% on Codex while lifting scores.</span></div>
+        </div>
+
+        <div style="margin-top:14px;padding:14px 12px 4px;border-top:1px solid var(--pt-divider);"><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-accent-ink);margin-right:8px;">BOTTOM LINE</span><span style="font-size:14.5px;font-weight:600;line-height:1.56;color:var(--pt-ink);">Durable self-improvement binds code gates to co-evolved verifiers. That stack guards 103 Aura OS modules.</span></div>
+      </div>
+
+      <div class="pt-stat-stack">
+        <div class="pt-stat-card"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">01</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);text-align:right;line-height:1.35;">Modular Harness Framework · arXiv:2611.22299</span></div><div style="font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--pt-accent-ink);line-height:1.1;margin-bottom:5px;font-variant-numeric:tabular-nums;">8x</div><div style="font-size:14px;font-weight:500;line-height:1.45;color:var(--pt-ink-body);">SWE-bench Lite accuracy lift (5.0% to 40.0%) from modular gated evolution with zero unverified exits</div></div><div class="pt-stat-card"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">02</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);text-align:right;line-height:1.35;">Self-HPO · arXiv:2610.22791</span></div><div style="font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--pt-accent-ink);line-height:1.1;margin-bottom:5px;font-variant-numeric:tabular-nums;">64.8%</div><div style="font-size:14px;font-weight:500;line-height:1.45;color:var(--pt-ink-body);">Mean coding resolve rate for Qwen3.5-35B-A3B under Self-HPO, up from 57.8% baseline</div></div><div class="pt-stat-card"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">03</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);text-align:right;line-height:1.35;">Harness^2 · arXiv:2610.14224</span></div><div style="font-size:28px;font-weight:700;letter-spacing:-0.03em;color:var(--pt-accent-ink);line-height:1.1;margin-bottom:5px;font-variant-numeric:tabular-nums;">+11.8pp</div><div style="font-size:14px;font-weight:500;line-height:1.45;color:var(--pt-ink-body);">LAB gain from one Harness^2 step while cutting OpenCode steps 13.8% on Gemini 3.5 Flash</div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Deep Dive Cover Explainer (Committed 64ch Optical Scale + Clean Diptych) -->
+    <section id="sec-cover" class="pt-bento" data-spy-section>
+      <div class="pt-reader-header">
+        <div style="margin-bottom:12px;">
+          <span class="pt-pill pt-pill-accent"><span style="color:var(--pt-accent);">&#9679;</span>Daily Research Edition · Multi-Agent Signal 2 Noise</span>
+        </div>
+        <h2 style="margin:0 0 10px 0;font-size:clamp(24px,3.2vw,31px);font-weight:700;letter-spacing:-0.025em;line-height:1.18;color:var(--pt-ink);">
+          Why Modular Code Gates, Co-Evolved Verifiers, and Harness-Policy Loops Beat Static Prompts
+        </h2>
+        <p style="margin:0;font-size:17.5px;font-weight:500;line-height:1.60;color:var(--pt-ink-muted);">
+          Four open-license studies and today&#x27;s Aura OS scan anchor Issue 006. Code gates, joint RL, co-evolved verifiers, and two-level probes lift solve rates while cutting token waste.
+        </p>
+      </div>
+
+      
+      <div class="pt-shift-grid">
+        <div class="pt-shift-card pt-shift-before">
+          <div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-terracotta-ink);margin-bottom:6px;">Before &middot; Old Ceiling</div>
+          <div style="font-size:15px;line-height:1.62;color:var(--pt-ink-body);">Teams stacked longer prompt rules onto static harnesses. They also kept one frozen judge across every model update.</div>
+        </div>
+        <div class="pt-shift-card pt-shift-now">
+          <div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-accent-ink);margin-bottom:6px;">Now &middot; Signal-Locked Loop</div>
+          <div style="font-size:15px;font-weight:600;line-height:1.62;color:var(--pt-ink);">S2N pairs modular code gates with co-evolved verifiers. It co-adapts harness state and policy across hard tasks.</div>
+        </div>
+      </div>
+      
+
+      <figure class="pt-figure"><img src="assets/issue-006-cover-modular-hpo-architecture.jpg" alt="Four-layer RSI stack combining modular pre-stop code gates (40.0% SWE-bench Lite, -60% tokens), Self-HPO alternating H-P loops (64.8%), UCoE driving-capacity verifiers (22.7% Codex), and Harness^2 two-level open-world probes (-15.5% steps)" loading="lazy" decoding="async" class="pt-figure-img"><figcaption class="pt-figcaption"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">COVER ARCHITECTURE</span><span>Modular code gates, alternating Self-HPO loops, contrast-tested verifiers, and two-level probes compound RSI accuracy without token bloat.</span></figcaption></figure>
+
+      <div class="pt-cover-grid">
+        <div class="pt-editorial-col">
+          <div class="pt-deep-only"><h3 class="pt-chapter-h3" style="margin-top:4px;"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">01</span><span>Modular Code Gates Beat Prompt Rules and Full Rewrites at 2.5x Lower Cost</span></h3><p class="pt-prose-p">Markdown rules break down under multi-turn loop pressure. Google researchers built a unifying modular framework across four runtime files. Under Prompt-Only Reflection, agents ignored RULES.md and doubled unverified exits to 30.0%. Real Python gates on context, tools, and stop hooks fix that leak.</p><p class="pt-prose-p">Modular Stage-3 gates also beat full rewrites on cost and transfer. Full rewrites raised turn caps to 28 and burned 451.6k tokens per task. Modular gated evolution kept the 12-turn cap and hit 40.0% at 46.7k tokens. Zero-shot transfer to Gemini 4 Argon reached 37.5% at 64.8k tokens.</p></div><div class="pt-deep-only"><h3 class="pt-chapter-h3" style="margin-top:28px;"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">02</span><span>Co-Evolving Harness Code and Policy Weights Breaks Static Ceilings</span></h3><p class="pt-prose-p">Tuning only weights or only harnesses hits an early wall. Microsoft Research, UVA, and CMU introduced Self-HPO to alternate both steps. Each round runs an H-step harness edit before a P-step RL update. Hard tasks failed during RL seed the next harness search.</p><p class="pt-prose-p">Joint evolution beat single-side tuning across three SWE benchmarks. On Qwen3.5-35B-A3B, Self-HPO hit 69.5% on SWE-Verified and 64.8% overall. Out-of-domain scores rose +5.5 points on SWE-Multi and +6.9 points on SWE-Pro. Meanwhile, isolated SFT distillation fell below base out of domain.</p></div>
+        </div>
+        <div style="border-left:1px solid var(--pt-divider);padding:8px 8px 8px 22px;"><div style="padding:0 0 18px 0;margin-bottom:18px;border-bottom:1px solid var(--pt-divider);"><div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-accent-ink);margin-bottom:6px;">Key Takeaway</div><div style="font-size:16px;font-weight:700;line-height:1.58;color:var(--pt-ink);">&ldquo;Replace markdown promises with pre-stop code gates, and evolve your verifier every time your agent outgrows its old judge.&rdquo;</div></div><div style="padding:2px 0;"><div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-ink-muted);margin-bottom:8px;">VEIO S2N &middot; Primary Spec</div><div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-11-17-harnesses-that-improve-themselves" title="Copy spec ID"><span>&#9064; s2n-2026-11-17-harnesses-that-improve-themselves</span></button><span class="pt-pill pt-pill-viridian">safety-and-governance</span></div><div style="font-size:15px;font-weight:700;color:var(--pt-ink);line-height:1.35;margin-bottom:4px;">Harnesses That Improve Themselves: A Unifying Framework for Self-Improving Agent Harnesses</div><div style="font-size:13.75px;line-height:1.56;color:var(--pt-ink-body);">Modular code gates beat prompt rules and full rewrites. SWE-bench Lite hits 40.0% at 2.5x lower token spend.</div></div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Interactive 4-Stage Loop Blueprint (Smoked Night-Sky Glass) -->
+    <section id="sec-loop" class="pt-blueprint" data-spy-section data-stepper-root>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+        <div>
+          <span class="pt-pill pt-pill-dark"><span style="color:#6EE2C3;">&#9679;</span>System Blueprint &middot; 4-Stage Loop</span>
+          <h2 style="margin:10px 0 0 0;font-size:clamp(21px,2.8vw,26px);font-weight:700;letter-spacing:-0.02em;color:#F6F5F2;">
+            How S2N Unites Code Gates, Policy Co-Evolution, Verifier Contrasts, and Probes
+          </h2>
+        </div>
+
+        <button type="button" id="pt-step-auto" aria-pressed="false" style="appearance:none;border:1px solid #6EE2C3;background:rgba(13,110,87,0.34);color:#6EE2C3;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer;">&#9654; Play Loop</button>
+      </div>
+
+      <div class="pt-step-tabs">
+        <button type="button" class="pt-step-tab is-active" data-step-tab="0" data-step-num="STAGE 01 OF 04" data-step-title="Modular Stop Gate" data-step-body="Pre-stop code checks verify non-empty diffs, clean compiles, and passing tests. Unverified exits fall to zero." data-step-next="Feeds -&gt; 02 Alternating H-P Loop"><span style="display:block;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#6EE2C3;margin-bottom:3px;">STAGE 01</span><span style="display:block;font-size:13.5px;font-weight:700;line-height:1.32;">01 &middot; Modular Stop Gate</span></button><button type="button" class="pt-step-tab" data-step-tab="1" data-step-num="STAGE 02 OF 04" data-step-title="Alternating H-P Loop" data-step-body="Unresolved verifier tasks seed H-step harness fixes before RL updates. Harness and weights co-adapt around active flaws." data-step-next="Feeds -&gt; 03 Contrast Verifier Gate"><span style="display:block;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#6EE2C3;margin-bottom:3px;">STAGE 02</span><span style="display:block;font-size:13.5px;font-weight:700;line-height:1.32;">02 &middot; Alternating H-P Loop</span></button><button type="button" class="pt-step-tab" data-step-tab="2" data-step-num="STAGE 03 OF 04" data-step-title="Contrast Verifier Gate" data-step-body="UCoE scores candidate verifiers by driving capacity on paired contrasts. Stronger judges block stale memory writes." data-step-next="Feeds -&gt; 04 Two-Level Probe"><span style="display:block;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#6EE2C3;margin-bottom:3px;">STAGE 03</span><span style="display:block;font-size:13.5px;font-weight:700;line-height:1.32;">03 &middot; Contrast Verifier Gate</span></button><button type="button" class="pt-step-tab" data-step-tab="3" data-step-num="STAGE 04 OF 04" data-step-title="Two-Level Probe" data-step-body="Harness^2 probes tasks without ground truth and saves wins. Open-world tasks finish in fewer steps." data-step-next="Closes Loop -&gt; Feeds 01 Modular Stop Gate"><span style="display:block;font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#6EE2C3;margin-bottom:3px;">STAGE 04</span><span style="display:block;font-size:13.5px;font-weight:700;line-height:1.32;">04 &middot; Two-Level Probe</span></button>
+      </div>
+
+      <div class="pt-step-spotlight">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+          <span id="pt-live-num" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#6EE2C3;">STAGE 01 OF 04</span>
+          <span id="pt-live-next" style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:#A6B9FF;">Feeds -&gt; 02 Alternating H-P Loop</span>
+        </div>
+        <div id="pt-live-title" style="font-size:21px;font-weight:700;color:#F6F5F2;margin-bottom:6px;letter-spacing:-0.015em;">
+          Modular Stop Gate
+        </div>
+        <div id="pt-live-body" style="font-size:16px;line-height:1.66;color:#E4E8F0;max-width:66ch;">
+          Pre-stop code checks verify non-empty diffs, clean compiles, and passing tests. Unverified exits fall to zero.
+        </div>
+      </div>
+
+      <div class="pt-step-cards pt-deep-only">
+        <div class="pt-step-card is-active" data-step-card="0" role="button" tabindex="0"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;"><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#A6B9FF;">STAGE 01</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">Feeds -&gt; 02 Alternating H-P Loop</span></div><div style="font-size:16px;font-weight:700;color:#F6F5F2;margin-bottom:5px;">Modular Stop Gate</div><div style="font-size:14.25px;line-height:1.60;color:#E4E8F0;">Pre-stop code checks verify non-empty diffs, clean compiles, and passing tests. Unverified exits fall to zero.</div></div><div class="pt-step-card" data-step-card="1" role="button" tabindex="0"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;"><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#A6B9FF;">STAGE 02</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">Feeds -&gt; 03 Contrast Verifier Gate</span></div><div style="font-size:16px;font-weight:700;color:#F6F5F2;margin-bottom:5px;">Alternating H-P Loop</div><div style="font-size:14.25px;line-height:1.60;color:#E4E8F0;">Unresolved verifier tasks seed H-step harness fixes before RL updates. Harness and weights co-adapt around active flaws.</div></div><div class="pt-step-card" data-step-card="2" role="button" tabindex="0"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;"><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#A6B9FF;">STAGE 03</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">Feeds -&gt; 04 Two-Level Probe</span></div><div style="font-size:16px;font-weight:700;color:#F6F5F2;margin-bottom:5px;">Contrast Verifier Gate</div><div style="font-size:14.25px;line-height:1.60;color:#E4E8F0;">UCoE scores candidate verifiers by driving capacity on paired contrasts. Stronger judges block stale memory writes.</div></div><div class="pt-step-card" data-step-card="3" role="button" tabindex="0"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;"><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:#A6B9FF;">STAGE 04</span><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#BAC4D6;">Closes Loop -&gt; Feeds 01 Modular Stop Gate</span></div><div style="font-size:16px;font-weight:700;color:#F6F5F2;margin-bottom:5px;">Two-Level Probe</div><div style="font-size:14.25px;line-height:1.60;color:#E4E8F0;">Harness^2 probes tasks without ground truth and saves wins. Open-world tasks finish in fewer steps.</div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Topic-Filterable Research Frontier Dispatches -->
+    <section id="sec-dispatches" class="pt-section-block" data-spy-section>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span class="pt-pill pt-pill-accent"><span style="color:var(--pt-accent);">&#9679;</span>From the Research Frontier</span>
+          <span class="pt-pill pt-pill-viridian">&#10003; Verified Primary Sources</span>
+        </div>
+        <div class="pt-seg-group" role="group" aria-label="Filter dispatches by domain">
+          <button type="button" class="pt-seg-btn is-active" data-filter-btn="ALL">All (2)</button><button type="button" class="pt-seg-btn" data-filter-btn="Verifier Co-Evolution">Verifier Co-Evolution</button><button type="button" class="pt-seg-btn" data-filter-btn="Open-World Rsi">Open-World Rsi</button>
+        </div>
+      </div>
+
+      <div class="pt-dispatch-grid">
+        <article class="pt-dispatch-card" data-dispatch-tag="Verifier Co-Evolution"><div><div style="margin-bottom:8px;"><span class="pt-pill pt-pill-accent">Verifier Co-Evolution · Training-Free</span></div><h3 style="margin:0 0 12px 0;font-size:19.5px;font-weight:700;letter-spacing:-0.02em;line-height:1.32;color:var(--pt-ink);">UCoE Co-Evolves Executable Verifiers Using Driving Capacity on Contrasts</h3><figure class="pt-figure pt-figure-compact"><img src="assets/issue-006-dispatch-1-ucoe-driving-capacity.jpg" alt="Diagram showing UCoE co-evolving executable verifier programs via driving capacity over paired response contrasts to gate a 12-entry 2400-character harness state" loading="lazy" decoding="async" class="pt-figure-img"><figcaption class="pt-figcaption"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">VERIFIER CO-EVOLUTION</span><span>UCoE gates verifier updates on paired contrast driving capacity, lifting Codex SpreadsheetBench-2 accuracy from 17.3% to 22.7%.</span></figcaption></figure><p class="pt-prose-p pt-deep-only" style="font-size:15.25px;line-height:1.68;">Static verifiers go stale once an agent fixes its early mistakes. Researchers from Oregon State, Penn State, Johnson &amp; Johnson, and AG2 AI built UCoE. It co-evolves an executable verifier program alongside a bounded harness experience block. Candidate verifiers must beat the current judge on paired response contrasts.</p><p class="pt-prose-p pt-deep-only" style="font-size:15.25px;line-height:1.68;">Selection uses driving capacity, the lowest margin across contrast families. On six open-ended suites, UCoE hit 59.00% win preference on Qwen3-8B. Verifiable tasks rose from 36.06% to 38.48% with fixed weights. Inside Codex on SpreadsheetBench-2, exact match rose from 17.3% to 22.7%.</p></div><div><div style="margin:10px 0 14px;padding:12px 0 2px;border-top:1px solid var(--pt-divider);"><div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-viridian-ink);margin-bottom:3px;">Why It Matters</div><div style="font-size:14px;line-height:1.56;color:var(--pt-ink);font-weight:600;">VEIO evolves Stage 06 verifier.py bundles across weekly cycles. Driving capacity ensures new checks beat old ones before replacing Seatbelt rules.</div></div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;"><a href="https://arxiv.org/abs/2610.17609" target="_blank" rel="noopener" class="pt-cta-pill">Read study &rarr;</a><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);">arXiv:2610.17609</span></div></div></article><article class="pt-dispatch-card" data-dispatch-tag="Open-World Rsi"><div><div style="margin-bottom:8px;"><span class="pt-pill pt-pill-accent">Open-World RSI · Contrastive Probes</span></div><h3 style="margin:0 0 12px 0;font-size:19.5px;font-weight:700;letter-spacing:-0.02em;line-height:1.32;color:var(--pt-ink);">Harness^2 Scales Two-Level Recursion Across Unseen Open-World Tasks</h3><figure class="pt-figure pt-figure-compact"><img src="assets/issue-006-dispatch-2-harness2-open-world.jpg" alt="Two-level Harness^2 architecture pairing task-level Propose-Probe-Compose edits with harnessing-level memory across OpenCode and Codex" loading="lazy" decoding="async" class="pt-figure-img"><figcaption class="pt-figcaption"><span class="pt-pill pt-pill-accent" style="flex-shrink:0;">OPEN-WORLD RECURSION</span><span>Harness^2 lifts WorkBuddy-Bench (+11.5 pts) and LAB (+11.8 pp) while cutting Gemini 3.5 Flash steps 13.8% on OpenCode and 15.5% on Codex.</span></figcaption></figure><p class="pt-prose-p pt-deep-only" style="font-size:15.25px;line-height:1.68;">Real workflows rarely hand agents unit tests at start time. Google Cloud AI Research and Northwestern built Harness^2 for unseen tasks. Task-level recursion runs a contrastive Propose-Probe-Compose loop to compare harness edits. Harnessing-level recursion then distills winning edits into reusable cross-task memory.</p><p class="pt-prose-p pt-deep-only" style="font-size:15.25px;line-height:1.68;">Single-step edits lifted GLM-5 and Gemini 3.5 Flash across suites. Gains reached +11.5 points on WorkBuddy-Bench and +11.8 points on LAB. Parallel search (k=5) added +3.9 points for GLM-5 while trimming 2.7 steps. Gemini 3.5 Flash cut steps 13.8% on OpenCode and 15.5% on Codex.</p></div><div><div style="margin:10px 0 14px;padding:12px 0 2px;border-top:1px solid var(--pt-divider);"><div style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--pt-viridian-ink);margin-bottom:3px;">Why It Matters</div><div style="font-size:14px;line-height:1.56;color:var(--pt-ink);font-weight:600;">VEIO coordinates OpenCode, Codex, and Gemini builders across mixed tasks. Propose-Probe-Compose fills verifier gaps when repos lack tests.</div></div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;"><a href="https://arxiv.org/abs/2610.14224" target="_blank" rel="noopener" class="pt-cta-pill">Read study &rarr;</a><span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);">arXiv:2610.14224</span></div></div></article>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Persimmon Terracotta Guardrail Watch + Copyable S2N Vault Ledger -->
+    <section id="sec-vault" class="pt-spread-2col" data-spy-section>
+      <div class="pt-bento" style="background:var(--pt-terracotta-surface);border-color:var(--pt-terracotta-border);">
+        <div style="margin-bottom:10px;">
+          <span class="pt-pill pt-pill-terracotta"><span style="color:var(--pt-terracotta);">&#9679;</span>Guardrail &amp; Reward-Hacking Watch</span>
+        </div>
+        <h3 style="margin:0 0 12px 0;font-size:21px;font-weight:700;letter-spacing:-0.02em;line-height:1.26;color:var(--pt-ink);">
+          Aura OS Grows to 103 Task-Graph Modules Across 16 Active Lanes
+        </h3>
+        <p class="pt-prose-p" style="font-size:15.25px;line-height:1.68;margin-bottom:10px;">Today&#x27;s Aura OS scan checks structural parity inside /Users/andylxt/aura_os. The task_graph spine grew by 2 modules from 101 to 103 today. Eight core guard modules, 18 Bolt heuristics, and 26 guard test files stay active. Sixteen active lanes and 5 wired adapters hold steady beside 4 retired lanes.</p><p class="pt-prose-p" style="font-size:15.25px;line-height:1.68;margin-bottom:10px;">Eleven active lanes remain unwired, leaving uneven runtime guard coverage. Hard caps still lock tasks to 12 steps and 2 tool retries after the 19,964,543-token runaway incident. Modular pre-stop verify.py gates and UCoE contrast checks align directly with those 12-step limits.</p>
+      </div>
+
+      <div class="pt-bento">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+          <span class="pt-pill pt-pill-accent"><span style="color:var(--pt-accent);">&#9679;</span>Indexed in Your S2N Vault</span>
+          <span style="font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;font-weight:600;color:var(--pt-ink-muted);">5 Specs</span>
+        </div>
+        <div>
+          <div style="padding:14px 0;border-bottom:1px solid var(--pt-divider);"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-11-17-harnesses-that-improve-themselves" title="Copy spec ID"><span>&#9064; s2n-2026-11-17-harnesses-that-improve-themselves</span></button><span class="pt-pill pt-pill-accent">safety-and-governance</span></div><div style="font-size:15.5px;font-weight:700;color:var(--pt-ink);margin-bottom:4px;">Harnesses That Improve Themselves: A Unifying Framework for Self-Improving Agent Harnesses</div><div style="font-size:14.25px;line-height:1.58;color:var(--pt-ink-body);">Modular code gates beat prompt rules and full rewrites. SWE-bench Lite hits 40.0% at 2.5x lower token spend.</div></div><div style="padding:14px 0;border-bottom:1px solid var(--pt-divider);"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-10-16-self-hpo-harness-policy-optimization" title="Copy spec ID"><span>&#9064; s2n-2026-10-16-self-hpo-harness-policy-optimization</span></button><span class="pt-pill pt-pill-accent">architectures</span></div><div style="font-size:15.5px;font-weight:700;color:var(--pt-ink);margin-bottom:4px;">Self-Evolving Coding Agents via Harness-Policy Optimization</div><div style="font-size:14.25px;line-height:1.58;color:var(--pt-ink-body);">Self-HPO alternates harness edits with RL policy updates. Qwen3.5-35B-A3B resolve rates jump from 57.8% to 64.8%.</div></div><div style="padding:14px 0;border-bottom:1px solid var(--pt-divider);"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-10-13-ucoe-verifier-harness-coevolution" title="Copy spec ID"><span>&#9064; s2n-2026-10-13-ucoe-verifier-harness-coevolution</span></button><span class="pt-pill pt-pill-accent">studies</span></div><div style="font-size:15.5px;font-weight:700;color:var(--pt-ink);margin-bottom:4px;">Verifier-Harness Co-Evolution for Training-Free Self-Improvement on Open-Ended Tasks</div><div style="font-size:14.25px;line-height:1.58;color:var(--pt-ink-body);">UCoE co-evolves executable verifiers using contrast driving capacity. Codex SpreadsheetBench-2 rises from 17.3% to 22.7%.</div></div><div style="padding:14px 0;border-bottom:1px solid var(--pt-divider);"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-10-09-harness2-open-world-rsi" title="Copy spec ID"><span>&#9064; s2n-2026-10-09-harness2-open-world-rsi</span></button><span class="pt-pill pt-pill-accent">use-cases</span></div><div style="font-size:15.5px;font-weight:700;color:var(--pt-ink);margin-bottom:4px;">Harness^2: Recursive Agent Harnessing for an Open World</div><div style="font-size:14.25px;line-height:1.58;color:var(--pt-ink-body);">Two-level probes adapt agent harnesses on unseen tasks. LAB gains +11.8 points while Codex steps drop 15.5%.</div></div><div style="padding:14px 0;"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;"><button type="button" class="pt-copy-chip" data-copy-text="s2n-2026-11-24-veio-aom-telemetry-baseline" title="Copy spec ID"><span>&#9064; s2n-2026-11-24-veio-aom-telemetry-baseline</span></button><span class="pt-pill pt-pill-accent">use-cases</span></div><div style="font-size:15.5px;font-weight:700;color:var(--pt-ink);margin-bottom:4px;">VEIO AOM Task-Graph Spine and 16-Lane Telemetry Snapshot (2026-11-24)</div><div style="font-size:14.25px;line-height:1.58;color:var(--pt-ink-body);">Aura OS expands to 103 task_graph modules today. Hard 12-step and 2-retry caps stay active across 16 lanes.</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align:center;padding:24px 12px 8px;color:var(--pt-ink-muted);font-size:12.5px;line-height:1.72;">
+    <strong style="color:var(--pt-ink);">The Signal Brief</strong> &middot; <strong style="color:var(--pt-accent-ink);">VEIO S2N</strong><br>
+    Signal 2 Noise intelligence keeping VEIO agents locked on goal &middot; Published daily at 07:00 ET
+  </footer>
+</div>
+
+<script>
+(function() {
+  const SIM_DATA = {"baseTiles": [{"label": "OLD BOTTLENECK", "value": "Static Prompts", "sub": "Capped by human data"}, {"label": "TODAY'S LOOP", "value": "Self-Evolving", "sub": "Sandbox & meta-judge"}, {"label": "VERIFIED GAIN", "value": "8x", "sub": "+5 specs in S2N Vault"}], "readMins": 4};
+  const root = document.body;
+
+  function copyTextSafe(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(function() {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(ta);
+    }
+  }
+
+  // 1. Scroll Progress Rail & Section Scroll-Spy
+  const progBar = document.getElementById('pt-progress-bar');
+  function updateProgress() {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const ratio = Math.min(1, Math.max(0, window.scrollY / max));
+    if (progBar) progBar.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  const spySections = document.querySelectorAll('[data-spy-section]');
+  const spyLinks = document.querySelectorAll('[data-spy-link]');
+  if (spySections.length && spyLinks.length && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          spyLinks.forEach(function(lnk) {
+            lnk.classList.toggle('is-active', lnk.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -62% 0px' });
+    spySections.forEach(function(s) { obs.observe(s); });
+  }
+
+  // 2. Deep Dive vs. 30-Second Skim Mode
+  const densityBtns = document.querySelectorAll('[data-density]');
+  const readBadge = document.getElementById('pt-read-badge');
+  densityBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const mode = btn.getAttribute('data-density');
+      densityBtns.forEach(function(b) { b.classList.toggle('is-active', b === btn); });
+      const isSkim = mode === 'skim';
+      root.classList.toggle('is-skim-mode', isSkim);
+      if (readBadge) {
+        readBadge.textContent = isSkim ? '30 sec skim' : SIM_DATA.readMins + ' min read';
+      }
+      updateProgress();
+    });
+  });
+
+  // 3. Single Circular Icon Toggle: Gallery Silk vs. Nocturnal Appearance
+  const themeBtn = document.getElementById('pt-theme-btn');
+  const themeIcon = document.getElementById('pt-theme-icon');
+  if (themeBtn && themeIcon) {
+    themeBtn.addEventListener('click', function() {
+      const next = root.getAttribute('data-pantone-mode') === 'nocturnal' ? 'silk' : 'nocturnal';
+      root.setAttribute('data-pantone-mode', next);
+      const isDark = next === 'nocturnal';
+      themeIcon.innerHTML = isDark ? '&#9728;' : '&#9790;';
+      const lbl = isDark ? 'Switch to Gallery Silk appearance' : 'Toggle Nocturnal appearance';
+      themeBtn.setAttribute('aria-label', lbl);
+      themeBtn.setAttribute('title', lbl);
+      themeBtn.classList.toggle('is-active', isDark);
+    });
+  }
+
+  // 4. Pointer-Tracked 3D Refractive Issue Pass
+  const holoPass = document.getElementById('pt-holo-pass');
+  if (holoPass && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    holoPass.addEventListener('pointermove', function(e) {
+      const r = holoPass.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      holoPass.style.transform = 'rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (-y * 10).toFixed(2) + 'deg) scale3d(1.015,1.015,1.015)';
+      holoPass.style.setProperty('--holo-x', ((x + 0.5) * 100).toFixed(1) + '%');
+      holoPass.style.setProperty('--holo-y', ((y + 0.5) * 100).toFixed(1) + '%');
+    });
+    holoPass.addEventListener('pointerleave', function() {
+      holoPass.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
+      holoPass.style.setProperty('--holo-x', '50%');
+      holoPass.style.setProperty('--holo-y', '50%');
+    });
+  }
+
+  // 5. Interactive Self-Play Horizon Range Simulator + Sparkline Sync
+  const simRange = document.getElementById('pt-sim-range');
+  const simReadout = document.getElementById('pt-sim-readout');
+  const sparkBars = document.querySelectorAll('#pt-spark-bars .pt-spark-bar');
+  const t0Val = document.getElementById('pt-t0-val');
+  const t0Sub = document.getElementById('pt-t0-sub');
+  const t1Val = document.getElementById('pt-t1-val');
+  const t1Sub = document.getElementById('pt-t1-sub');
+  const t2Val = document.getElementById('pt-t2-val');
+  const t2Sub = document.getElementById('pt-t2-sub');
+
+  function updateSimulator(gen) {
+    if (!simRange) return;
+    const pct = ((gen - 1) / 19 * 100).toFixed(1);
+    simRange.style.setProperty('--pct', pct + '%');
+
+    const base = SIM_DATA.baseTiles;
+    let heights = [28, 44, 61, 79, 94];
+
+    if (gen === 12) {
+      if (simReadout) simReadout.innerHTML = 'Gen 12 &middot; Issue Snapshot';
+      if (t0Val) t0Val.textContent = base[0].value;
+      if (t0Sub) t0Sub.textContent = base[0].sub;
+      if (t1Val) t1Val.textContent = base[1].value;
+      if (t1Sub) t1Sub.textContent = base[1].sub;
+      if (t2Val) t2Val.textContent = base[2].value;
+      if (t2Sub) t2Sub.textContent = base[2].sub;
+    } else if (gen < 6) {
+      if (simReadout) simReadout.innerHTML = 'Gen ' + gen + ' &middot; Bootstrap Sandbox';
+      if (t0Val) t0Val.textContent = 'Static Seed Cap';
+      if (t0Sub) t0Sub.textContent = 'Human prompt pool saturates early';
+      if (t1Val) t1Val.textContent = 'Sandbox Warmup';
+      if (t1Sub) t1Sub.textContent = 'Filtering invalid candidate rollouts';
+      if (t2Val) t2Val.textContent = '+' + (gen * 1.4).toFixed(1) + '% Pass@1';
+      if (t2Sub) t2Sub.textContent = 'Initial verifier reward lock-in';
+      heights = [18 + gen * 2, 24 + gen * 3, 28 + gen * 3, 32 + gen * 4, 36 + gen * 4];
+    } else if (gen < 12) {
+      if (simReadout) simReadout.innerHTML = 'Gen ' + gen + ' &middot; Curriculum Climb';
+      if (t0Val) t0Val.textContent = base[0].value;
+      if (t0Sub) t0Sub.textContent = 'Zero human labels added in loop';
+      if (t1Val) t1Val.textContent = 'Co-Evolving Tasks';
+      if (t1Sub) t1Sub.textContent = 'Proposer raises difficulty automatically';
+      if (t2Val) t2Val.textContent = '+' + (gen * 1.65).toFixed(1) + '% Pass@1';
+      if (t2Sub) t2Sub.textContent = 'Surpassing static SFT baselines';
+      heights = [24, 36, 48 + (gen - 6) * 2, 60 + (gen - 6) * 3, 72 + (gen - 6) * 3.5];
+    } else {
+      if (simReadout) simReadout.innerHTML = 'Gen ' + gen + ' &middot; Compounding Frontier';
+      if (t0Val) t0Val.textContent = base[0].value;
+      if (t0Sub) t0Sub.textContent = 'Static human datasets left behind';
+      if (t1Val) t1Val.textContent = 'Multi-Hop Synthesis';
+      if (t1Sub) t1Sub.textContent = 'Judge + Sandbox guardrails active';
+      if (t2Val) t2Val.textContent = '+' + (gen * 1.8).toFixed(1) + '% Frontier';
+      if (t2Sub) t2Sub.textContent = 'Sustained verified reasoning gain';
+      const boost = gen - 12;
+      heights = [30 + boost, 48 + boost * 1.4, 65 + boost * 1.6, 82 + boost * 1.5, Math.min(100, 94 + boost * 0.8)];
+    }
+
+    sparkBars.forEach(function(bar, i) {
+      bar.style.height = Math.min(100, Math.round(heights[i])) + '%';
+    });
+  }
+
+  if (simRange) {
+    simRange.addEventListener('input', function() {
+      updateSimulator(parseInt(simRange.value, 10));
+    });
+  }
+  if (simReadout && simRange) {
+    simReadout.addEventListener('click', function() {
+      simRange.value = '12';
+      updateSimulator(12);
+    });
+  }
+
+  // 6. Quiet Tap-to-Note Takeaways
+  const signalItems = document.querySelectorAll('[data-signal-item]');
+  const signalTally = document.getElementById('pt-signal-tally');
+  function updateSignalTally() {
+    if (!signalTally) return;
+    const checked = document.querySelectorAll('[data-signal-item].is-checked').length;
+    signalTally.textContent = checked > 0
+      ? (checked + ' of ' + signalItems.length + ' Noted')
+      : (signalItems.length + ' Key Takeaways');
+  }
+  signalItems.forEach(function(item) {
+    function toggleSignal() {
+      const active = item.classList.toggle('is-checked');
+      item.setAttribute('aria-pressed', active ? 'true' : 'false');
+      updateSignalTally();
+    }
+    item.addEventListener('click', toggleSignal);
+    item.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSignal(); }
+    });
+  });
+
+  // 7. Interactive 4-Stage Loop Stepper + Play Loop
+  const stepTabs = Array.from(document.querySelectorAll('[data-step-tab]'));
+  const stepCards = Array.from(document.querySelectorAll('[data-step-card]'));
+  const liveNum = document.getElementById('pt-live-num');
+  const liveTitle = document.getElementById('pt-live-title');
+  const liveBody = document.getElementById('pt-live-body');
+  const liveNext = document.getElementById('pt-live-next');
+  const autoBtn = document.getElementById('pt-step-auto');
+  let stepIdx = 0;
+  let autoTimer = null;
+
+  function activateStep(idx) {
+    if (!stepTabs.length) return;
+    stepIdx = (idx + stepTabs.length) % stepTabs.length;
+    stepTabs.forEach(function(t, i) { t.classList.toggle('is-active', i === stepIdx); });
+    stepCards.forEach(function(c, i) { c.classList.toggle('is-active', i === stepIdx); });
+    const tab = stepTabs[stepIdx];
+    if (liveNum) liveNum.textContent = tab.getAttribute('data-step-num') || '';
+    if (liveTitle) liveTitle.textContent = tab.getAttribute('data-step-title') || '';
+    if (liveBody) liveBody.textContent = tab.getAttribute('data-step-body') || '';
+    if (liveNext) liveNext.textContent = tab.getAttribute('data-step-next') || '';
+  }
+
+  function stopAutoCycle() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (autoBtn) {
+      autoBtn.setAttribute('aria-pressed', 'false');
+      autoBtn.innerHTML = '&#9654; Play Loop';
+    }
+  }
+
+  stepTabs.forEach(function(t, i) {
+    t.addEventListener('click', function() { stopAutoCycle(); activateStep(i); });
+  });
+  stepCards.forEach(function(c, i) {
+    c.addEventListener('click', function() { stopAutoCycle(); activateStep(i); });
+  });
+  if (autoBtn && stepTabs.length) {
+    autoBtn.addEventListener('click', function() {
+      if (autoTimer) {
+        stopAutoCycle();
+      } else {
+        autoBtn.setAttribute('aria-pressed', 'true');
+        autoBtn.innerHTML = '&#10074;&#10074; Playing';
+        autoTimer = setInterval(function() { activateStep(stepIdx + 1); }, 3000);
+      }
+    });
+  }
+
+  // 8. Topic Filter for Research Dispatches
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const dispatchCards = document.querySelectorAll('[data-dispatch-tag]');
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const tag = btn.getAttribute('data-filter-btn');
+      filterBtns.forEach(function(b) { b.classList.toggle('is-active', b === btn); });
+      dispatchCards.forEach(function(card) {
+        const match = tag === 'ALL' || card.getAttribute('data-dispatch-tag') === tag;
+        card.classList.toggle('is-hidden', !match);
+      });
+    });
+  });
+
+  // 9. 1-Click Copy for S2N Vault Spec IDs
+  document.querySelectorAll('[data-copy-text]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      const val = el.getAttribute('data-copy-text') || '';
+      copyTextSafe(val);
+      const origHtml = el.innerHTML;
+      el.classList.add('is-copied');
+      el.innerHTML = '&#10003; Copied ' + val;
+      setTimeout(function() {
+        el.classList.remove('is-copied');
+        el.innerHTML = origHtml;
+      }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>
